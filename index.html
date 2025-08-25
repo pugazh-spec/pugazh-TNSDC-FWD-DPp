@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Digital Portfolio</title>
+  <meta name="description" content="A clean, responsive portfolio template in a single HTML file with HTML, CSS, and JavaScript." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --text: #e6e6e6;
+      --muted: #a0a7b4;
+      --card: #121723;
+      --accent: #6aa9ff;
+      --accent-2: #00d4ff;
+      --border: #1e2636;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    [data-theme="light"] {
+      --bg: #f7f8fa;
+      --text: #0f172a;
+      --muted: #475569;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --accent-2: #06b6d4;
+      --border: #e2e8f0;
+      --shadow: 0 8px 24px rgba(2,6,23,.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg); color: var(--text); line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    
+    header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(120%) blur(6px);
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; gap: 12px; align-items: center; font-weight: 800; letter-spacing: .3px; }
+    .brand-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow); }
+    .nav a { padding: 8px 12px; border-radius: 10px; }
+    .nav a:hover { background: color-mix(in srgb, var(--text) 10%, transparent); }
+    .nav-right { display: flex; gap: 6px; align-items: center; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--text); box-shadow: var(--shadow); }
+    .btn.primary { border-color: transparent; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #001225; font-weight: 700; }
+    .btn:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent); outline-offset: 2px; }
+   
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; padding: 56px 0 28px; align-items: center; }
+    .eyebrow { font-size: .9rem; color: var(--muted); letter-spacing: .2em; text-transform: uppercase; }
+    h1 { font-size: clamp(2rem, 3.4vw, 3.2rem); line-height: 1.1; margin:.35em 0; }
+    .lead { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--muted); }
+    .hero-cta { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 22px; box-shadow: var(--shadow); }
+    .avatar { aspect-ratio: 1/1; border-radius: 18px; background: radial-gradient(120px 120px at 70% 20%, color-mix(in srgb, var(--accent) 30%, transparent), transparent), linear-gradient(135deg, color-mix(in srgb, var(--accent) 55%, var(--card)), color-mix(in srgb, var(--accent-2) 40%, var(--card))); border: 1px solid var(--border); }
+   
+    section { padding: 28px 0 56px; }
+    section h2 { font-size: clamp(1.4rem, 2.4vw, 2rem); margin-bottom: 14px; }
+    .grid { display: grid; gap: 16px; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .skill { padding: 14px; border: 1px dashed var(--border); border-radius: 14px; }
+    .project { display: grid; gap: 12px; grid-template-rows: auto 1fr auto; }
+    .project-thumb { border-radius: 14px; border: 1px solid var(--border); background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 18%, var(--card)), color-mix(in srgb, var(--accent-2) 18%, var(--card))); aspect-ratio: 16/10; }
+    .project h3 { margin: 0; font-size: 1.05rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-size: .85rem; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in srgb, var(--card) 80%, transparent); color: var(--muted); }
+   
+    form { display: grid; gap: 12px; }
+    label { font-weight: 600; font-size: .92rem; }
+    input, textarea {
+      background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; font: inherit;
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    .help { color: var(--muted); font-size: .9rem; }
+    
+    footer { border-top: 1px solid var(--border); padding: 24px 0 56px; color: var(--muted); }
+    .footer-links { display: flex; gap: 14px; flex-wrap: wrap; }
+    
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    .center { display: grid; place-items: center; }
+    .divider { height: 1px; background: var(--border); margin: 26px 0 10px; }
+    .justified { text-align: justify; hyphens: auto; }
+    .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+   
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
+    @media (max-width: 720px) { .grid-3 { grid-template-columns: 1fr; } .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a href="#home" class="brand">
+        <span class="brand-logo" aria-hidden="true"></span>
+        <span>PugazhVendhan</span>
+      </a>
+      <nav class="row" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <button id="themeToggle" class="btn" aria-pressed="false" aria-label="Toggle theme">🌓 Theme</button>
+    
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="container hero">
+    <div>
+      <p class="eyebrow">Hello! I’m <strong>PugazhVendhan</strong></p>
+      <h1>I am Coding this Project For our naan mudhalvan Cource.</h1>
+      <p class="lead justified">I used a whole HTML code (Contain both CSS and JS) to build this project.I also talked about 'About me,My Skills, My projects and how to contact me.''</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="#skills">See Skills</a>
+      </div>
+    </div>
+  </main>
+
+  <section id="about">
+    <div class="container">
+      <h2>About</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <p class="justified">Basically I am a Good boy,I Likes to play AAA games like 'Free Fire'.I lratnt C,C++,Python and i am Learning Data structure.</p>
+          <div class="divider"></div>
+          <ul>
+            <li>Living in Pondicherry</li>
+            <li>Bachelor of Computer Application</li>
+            <li>Normally I am Introvert</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Hobbies</h3>
+          <ul>
+            <li>Playing Free Fire <strong><span id="lcpTarget">&lt;1.8s</span></strong> </li>
+            <li>Hearing songs</li>
+            <li>Making fun with some friends </li>
+          </ul>
+          <p class="help"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="grid grid-3">
+        <div class="card skill">
+          <h3>Core</h3>
+          <p>HTML, C++, Java,C And Data structures</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="grid grid-3">
+       
+        <article class="card project" aria-labelledby="p1-title">
+          <div class="project-thumb" aria-hidden="true"></div>
+          <div>
+            <h3 id="p1-title">Portfolio Website</h3>
+            <p>This is my First project</p>
+          </div>
+          <div class="row">
+            <a class="btn" href="#" aria-label="Open live demo of Portfolio Website">Live</a>
+            <a class="btn" href="#" aria-label="Open source code of Portfolio Website on GitHub">Code</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="grid grid-2">
+        <form id="contactForm" class="card" novalidate>
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Abhilash" required />
+            <p class="help" id="nameHelp">Please enter your full name.</p>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" inputmode="email" placeholder="yenga@kumapatti.com" required />
+            <p class="help" id="emailHelp">We’ll never share your email.</p>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about you thinking..." required></textarea>
+          </div>
+          <button class="btn primary" type="submit">Send Message</button>
+          <p id="status" class="help" role="status" aria-live="polite"></p>
+        </form>
+        <div class="card">
+          <h3 style="margin-top:0">Elsewhere</h3>
+          <ul>
+            <li>Email: <a href="mailto:you@example.com">kumapatti@yenga.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container row" style="justify-content: space-between;">
+      <p>© <span id="year"></span> PugazhVendhan</p>
+      <div class="footer-links">
+        <a href="#home">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) root.setAttribute('data-theme', savedTheme);
+    function toggleTheme() {
+      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'false' : 'true');
+    }
+    themeToggle.addEventListener('click', toggleTheme);
+
+   
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('status');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = data.get('name')?.toString().trim();
+      const email = data.get('email')?.toString().trim();
+      const message = data.get('message')?.toString().trim();
+
+      if (!name || !email || !message) {
+        status.textContent = 'Please fill out all fields.';
+        return;
+      }
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!emailOk) {
+        status.textContent = 'Please enter a valid email address.';
+        return;
+      }
+      
+      status.textContent = 'Thanks! Your message has been queued. (Demo only)';
+      form.reset();
+    });
+
+    
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    
+    const revealables = document.querySelectorAll('.card, .project');
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.animate([
+            { opacity: 0, transform: 'translateY(12px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { duration: 420, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' });
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { threshold: .2 });
+    revealables.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
